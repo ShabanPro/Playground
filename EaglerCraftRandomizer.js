@@ -54,24 +54,24 @@
             ];
             return items[Math.floor(Math.random() * items.length)];
         },
-        
+
         getRandomQuantity: function () {
             return Math.floor(Math.random() * 65); // Random quantity from 0 to 64
         }
     };
 
-    PluginAPI.addEventListener("blockBreak", (event) => {
-        let player = event.player;
+    ModAPI.addEventListener("playerdigging", (event) => {
+        let player = ModAPI.player;
         let pos = event.pos;
         let world = player.world;
 
-        event.cancel();
+        if (event.status === 2) { // Ensures it's a block break action
+            let randomItem = RandomDropPlugin.getRandomItem();
+            let quantity = RandomDropPlugin.getRandomQuantity();
 
-        let randomItem = RandomDropPlugin.getRandomItem();
-        let quantity = RandomDropPlugin.getRandomQuantity();
-
-        if (quantity > 0) {
-            world.dropItem(randomItem, pos.x + 0.5, pos.y + 0.5, pos.z + 0.5, quantity);
+            if (quantity > 0) {
+                world.dropItem(randomItem, pos.x + 0.5, pos.y + 0.5, pos.z + 0.5, quantity);
+            }
         }
     });
 })();
