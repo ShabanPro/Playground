@@ -1,5 +1,5 @@
 (function randomBlockDrop() {
-    PluginAPI.require("player");
+    ModAPI.require("player");
 
     globalThis.RandomDropPlugin = {
         getRandomItem: function () {
