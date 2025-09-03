@@ -1,2 +1,2 @@
-# Minecraft Version 1
-This is Minecraft README file!
+# Playground For Anyone
+Playground for Anyone who wants to play.
